@@ -1,0 +1,143 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3e5mrwgik40y"]
+
+[ext_resource type="Script" uid="uid://birk0ivck7bb" path="res://Flock.cs" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dht62tkwoki23" path="res://Boid.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ces1lwmn8ld3h" path="res://Target1.tscn" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://dkrfhulc37bvk" path="res://Black.png" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ccxyb3kbd8bdf" path="res://player.tscn" id="5_7mycd"]
+[ext_resource type="Texture2D" uid="uid://cbxbxdaxibvb3" path="res://forest-nature-scene-for-cartoon-animation-vector.jpg" id="6_7mycd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(1613.1875, 117)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+size = Vector2(244.5, 99.5)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7mycd"]
+vertices = PackedVector2Array(634.71094, 458.3672, 464.21875, 437.47656, 568.72656, 370.5, 756.02344, 369.17188, 747.3828, 389.0625, 415.3203, 211.82031, 395.4922, 178.32813, 740, 289.2578, 874.03125, 333.64063, 866.28125, 289.71875, 905.02344, 267.77344, 899.64844, 369.1875, 873.2578, 349.78125)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 10, 11, 8), PackedInt32Array(12, 8, 11), PackedInt32Array(12, 11, 4, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(373.46277, 160.73413, 408.82306, 220.44821, 863.66296, 341.22333, 755.16016, 359.18243, 565.7646, 360.52936, 435.46436, 444.03928, 636.96954, 468.73306, 750.80066, 398.6925, 909.1954, 378.03952, 915.9768, 250.08076, 863.66296, 279.71332, 741.5973, 279.26434)])
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0xm2m")
+BoidScene = ExtResource("2_0xm2m")
+
+[node name="Target1" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(993, 390)
+
+[node name="collision areas" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="collision areas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision areas/StaticBody2D"]
+position = Vector2(800, 901)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="collision areas"]
+position = Vector2(-345, -366)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision areas/StaticBody2D2"]
+position = Vector2(291, 1048.125)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="collision areas/StaticBody2D2"]
+position = Vector2(144, 826.99994)
+scale = Vector2(1.7279999, 3.336)
+texture = ExtResource("4_lquwl")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="collision areas"]
+position = Vector2(1459, -366)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision areas/StaticBody2D3"]
+position = Vector2(201, 696)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="collision areas/StaticBody2D3"]
+position = Vector2(462.5, 837)
+scale = Vector2(2.564, 3.352)
+texture = ExtResource("4_lquwl")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="collision areas"]
+position = Vector2(14, -390)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision areas/StaticBody2D4"]
+position = Vector2(307.75, 1060.25)
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="Sprite2D" type="Sprite2D" parent="collision areas/StaticBody2D4"]
+position = Vector2(309, 1059)
+scale = Vector2(1.0039997, 0.41199994)
+texture = ExtResource("4_lquwl")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="collision areas"]
+position = Vector2(404, -539)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision areas/StaticBody2D5"]
+position = Vector2(307.75, 1060.25)
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="Sprite2D" type="Sprite2D" parent="collision areas/StaticBody2D5"]
+position = Vector2(309, 1059)
+scale = Vector2(1.0039997, 0.41199994)
+texture = ExtResource("4_lquwl")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="collision areas"]
+position = Vector2(879, -340)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision areas/StaticBody2D6"]
+position = Vector2(307.75, 1060.25)
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="Sprite2D" type="Sprite2D" parent="collision areas/StaticBody2D6"]
+position = Vector2(309, 1059)
+scale = Vector2(1.0039997, 0.41199994)
+texture = ExtResource("4_lquwl")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="collision areas"]
+position = Vector2(900, -756)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision areas/StaticBody2D7"]
+position = Vector2(307.75, 1060.25)
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="Sprite2D" type="Sprite2D" parent="collision areas/StaticBody2D7"]
+position = Vector2(309, 1059)
+scale = Vector2(1.0039997, 0.41199994)
+texture = ExtResource("4_lquwl")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="collision areas"]
+position = Vector2(-114, -598)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision areas/StaticBody2D8"]
+position = Vector2(307.75, 1060.25)
+shape = SubResource("RectangleShape2D_7mycd")
+
+[node name="Sprite2D" type="Sprite2D" parent="collision areas/StaticBody2D8"]
+position = Vector2(309, 1059)
+scale = Vector2(1.0039997, 0.41199994)
+texture = ExtResource("4_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="collision areas"]
+position = Vector2(871, -187.00006)
+scale = Vector2(12.156, 1.9120001)
+texture = ExtResource("4_lquwl")
+
+[node name="Player" parent="." instance=ExtResource("5_7mycd")]
+position = Vector2(697, 784)
+
+[node name="ForestNatureSceneForCartoonAnimationVector" type="Sprite2D" parent="."]
+z_index = -8
+position = Vector2(798, 414)
+texture = ExtResource("6_7mycd")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-487.99997, -223)
+scale = Vector2(2.0644627, 2.2272804)
+navigation_polygon = SubResource("NavigationPolygon_7mycd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(916, 967)
+scale = Vector2(12.4609375, 1)
+texture = ExtResource("4_lquwl")

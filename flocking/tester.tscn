@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmy3jngrup107"]
+
+[ext_resource type="Script" uid="uid://birk0ivck7bb" path="res://Flock.cs" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dht62tkwoki23" path="res://Boid.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ces1lwmn8ld3h" path="res://Target1.tscn" id="3_h2yge"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_h2yge"]
+vertices = PackedVector2Array(792.172, 302.961, 379.031, 261.25, 153.688, 137.711, 544.008, 124, 1055.89, 130, 1249.93, 270.406, 1371.13, 132.961, 1469.57, 221.094, 129.008, 669.172, 132.891, 249.773, 246.25, 268.523, 255.063, 558.18, 318.289, 706.773, 200.797, 853.906, 1295.34, 841.023, 756.344, 722.023, 1260.34, 670.094, 1463.64, 747.313, 1446.97, 465.828, 1280.08, 409.297)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(8, 11, 12, 13), PackedInt32Array(14, 13, 12, 15), PackedInt32Array(14, 15, 16, 17), PackedInt32Array(18, 17, 16, 19), PackedInt32Array(7, 18, 19, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(117, 129, 544, 114, 1056, 120, 1375, 123, 1480, 217, 1457, 466, 1474, 753, 1298, 851, 194, 864, 119, 671, 123, 238, 256, 260, 265, 556, 325, 697, 756, 712, 1251, 661, 1270, 410, 1242, 281, 792, 313, 376, 271)])
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0xm2m")
+BoidScene = ExtResource("2_0xm2m")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+scale = Vector2(0.5683392, 0.5683392)
+navigation_polygon = SubResource("NavigationPolygon_h2yge")
+
+[node name="Target1" parent="." instance=ExtResource("3_h2yge")]

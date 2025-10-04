@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dht62tkwoki23"]
+
+[ext_resource type="Script" uid="uid://nqmlg8o0uukw" path="res://Boid.cs" id="1_cwpja"]
+[ext_resource type="Texture2D" uid="uid://cc2td3b70fd" path="res://an-8-bit-retro-styled-pixel-art-illustration-of-a-bee-free-png.webp" id="2_cwpja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwpja"]
+size = Vector2(42, 35)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cwpja"]
+radius = 94.4299
+
+[node name="Boid" type="CharacterBody2D"]
+script = ExtResource("1_cwpja")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, -5.5)
+shape = SubResource("RectangleShape2D_cwpja")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 5.000001)
+scale = Vector2(0.18375002, 0.18375002)
+texture = ExtResource("2_cwpja")
+flip_h = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-27, -10, -27, 13, 28, 0)
+uv = PackedVector2Array(-67.9997, -40, -70.6664, 8.66667, 197.334, 5.33334)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-10, -7, -18, -7, -25, 3, -25, 8, -20, 7, -10, 2, -11, 12, 9, 12, 5, 3, 8, 0, 14, 5, 16, 2, 17, -3, 7, -17, 4, -9, -8, -24, -13, -23, -15, -16)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_cwpja")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-8.5, -2)
+scale = Vector2(6.65, 5.7)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="BoidExitedScreen"]
